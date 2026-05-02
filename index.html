@@ -296,6 +296,7 @@
             box-shadow: 0px 0px 0 rgba(0, 0, 0, 0.9);
         }
 
+        /* ── Vinyl ── */
         .vinyl {
             width: 260px;
             height: 260px;
@@ -344,6 +345,56 @@
             100% {
                 transform: rotate(360deg)
             }
+        }
+
+        /* ── Tonearm ── */
+        .tonearm {
+            position: absolute;
+            top: -10px;
+            right: -36px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .tonearm-arm {
+            width: 7px;
+            height: 95px;
+            background: linear-gradient(to right, #bbb, #777);
+            border-radius: 3px 3px 1px 1px;
+            transform: rotate(18deg);
+            transform-origin: top center;
+            transition: filter 0.2s;
+        }
+
+        .tonearm:hover .tonearm-arm {
+            filter: brightness(1.5);
+        }
+
+        .tonearm-pivot {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #aaa, #666);
+            border-radius: 50%;
+            border: 2px solid #444;
+            margin-left: -5px;
+            margin-bottom: -4px;
+        }
+
+        .tonearm-tip {
+            width: 11px;
+            height: 11px;
+            background: #dc143c;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(220, 20, 60, 0.9);
+            margin-left: -2px;
+            margin-top: -3px;
+            transform: rotate(18deg);
+            transform-origin: top center;
+            transition: box-shadow 0.2s;
+        }
+
+        .tonearm:hover .tonearm-tip {
+            box-shadow: 0 0 14px rgba(220, 20, 60, 1);
         }
 
         .riot-ticker {
@@ -481,6 +532,15 @@
             filter: contrast(1.1) saturate(0.9) sepia(0.1);
         }
 
+        .creator-photo {
+            filter: contrast(1.1) saturate(0.85) sepia(0.1);
+            transition: filter 0.3s;
+        }
+
+        .creator-photo:hover {
+            filter: contrast(1.0) saturate(1.0) sepia(0);
+        }
+
         .hero-logo {
             max-width: 700px;
             width: 90%;
@@ -606,18 +666,6 @@
             .vinyl {
                 animation-duration: 6s;
             }
-
-            .blur-\[100px\] {
-                filter: blur(60px);
-            }
-
-            .blur-\[120px\] {
-                filter: blur(70px);
-            }
-
-            .blur-\[140px\] {
-                filter: blur(80px);
-            }
         }
 
         ::-webkit-scrollbar {
@@ -738,12 +786,21 @@
                     class="font-marker text-paperCream/70 hover:text-paperCream text-lg underline decoration-burnRed underline-offset-4">Read
                     the Story</a>
             </div>
+
+            <!-- Vinyl + Tonearm -->
             <div class="mt-14 flex justify-center">
-                <div class="vinyl press-shadow" id="vinyl" onclick="toggleVinyl()" title="Click to drop the needle">
+                <div style="position:relative;display:inline-block;">
+                    <div class="vinyl press-shadow" id="vinyl" onclick="toggleVinyl()" title="Click to play / pause">
+                    </div>
+                    <div class="tonearm" id="tonearm" onclick="changeTrack()" title="Click needle to change track">
+                        <div class="tonearm-pivot"></div>
+                        <div class="tonearm-arm"></div>
+                        <div class="tonearm-tip"></div>
+                    </div>
                 </div>
             </div>
-            <p class="text-xs text-paperCream/30 mt-4 font-typewriter tracking-widest uppercase">Click the vinyl. Drop
-                the needle.</p>
+            <p class="text-xs text-paperCream/30 mt-6 font-typewriter tracking-widest uppercase">Click vinyl to play /
+                pause &bull; Click needle to change track</p>
         </div>
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
             <div class="w-6 h-10 border-2 border-paperCream/20 flex items-start justify-center pt-2">
@@ -957,128 +1014,150 @@ END REVIEWS HIDDEN -->
     <!-- Creators -->
     <section id="creators" class="relative z-10 py-20 md:py-32 paper-bg scanlines">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <span class="sticker text-burnRed border-burnRed text-sm">Behind the Scenes</span>
                 <h2 class="text-4xl md:text-6xl font-slab text-paperCream mt-6 mb-4 glitch ink-bleed"
                     data-text="THE CREATORS">THE CREATORS</h2>
                 <p class="text-paperCream/50 font-typewriter max-w-2xl mx-auto">The minds and hearts behind the music.
                 </p>
             </div>
+
+            <!-- Group photo banner -->
+            <div class="reveal max-w-3xl mx-auto mb-12 press-shadow border-2 border-mudBrown overflow-hidden">
+                <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/HE_group_pic.jpg"
+                 alt="The creative team of Harmony's Edge"
+                 class="w-full object-cover creator-photo"
+                 style="max-height:400px;object-position:center top;">
+                <div class="bg-nightBlack/80 px-6 py-3 text-center">
+                    <p class="text-paperCream/50 font-typewriter text-xs uppercase tracking-widest">Don Robertson &bull;
+                        Shirley Robertson &bull; David Vernon</p>
+                </div>
+            </div>
+
             <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
 
                 <!-- Shirley Robertson -->
-                <div class="reveal rough-card torn-both p-8 md:p-10">
-                    <div class="w-full h-56 mb-6 overflow-hidden border-2 border-mudBrown press-shadow">
+                <div class="reveal rough-card torn-both overflow-hidden">
+                    <div class="w-full h-56 overflow-hidden border-b-2 border-mudBrown">
                         <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/HE_Don_Shirley_3.jpg"
-                         alt="Shirley and Don Robertson"
-                         class="w-full h-full object-cover object-top photo-raw">
+                         alt="Shirley Robertson" class="w-full h-full object-cover creator-photo" style="object-position:center top;">
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Shirley Robertson</h3>
-                    <p class="text-burnRed font-marker text-sm mb-4">Writer &amp; Producer</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Shirley Robertson
-                        brings a lifelong passion for the arts to her debut musical <em>Harmony's Edge</em> as writer
-                        and producer—proving it's never too late to start a rock band, at least on paper.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Over the
-                        past decade, she has dedicated herself to singing (enthusiastically and often), and for the last
-                        four years has led Sisters in Song, a no-audition women's singing group in Pasadena,
-                        California—because she firmly believes you don't need perfect pitch to raise your voice, just a
-                        little courage and a willingness to show up.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Shirley has
-                        also collaborated with her husband, Don Robertson, and son, Damon Robertson, on the indie rock
-                        album <em>One Life</em> (2016)—a true family affair where creative differences were settled the
-                        old-fashioned way: by writing more songs. Their music blends traditional folk-rock with a
-                        secular humanist perspective, exploring what it means to live fully, intentionally, and with a
-                        good soundtrack.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Born in Los
-                        Angeles in 1948, Shirley is a retired clinical social worker who spent more than 20 years with
-                        the Los Angeles County Department of Mental Health. She now brings that same compassion,
-                        insight, and deep commitment to community into her creative work—only with better lighting and
-                        occasional applause.</p>
+                    <div class="p-8 md:p-10">
+                        <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Shirley Robertson</h3>
+                        <p class="text-burnRed font-marker text-sm mb-4">Writer &amp; Producer</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Shirley
+                            Robertson brings a lifelong passion for the arts to her debut musical
+                            <em>Harmony's Edge</em> as writer and producer—proving it's never too late to start a rock
+                            band, at least on paper.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Over the
+                            past decade, she has dedicated herself to singing (enthusiastically and often), and for the
+                            last four years has led Sisters in Song, a no-audition women's singing group in Pasadena,
+                            California—because she firmly believes you don't need perfect pitch to raise your voice,
+                            just a little courage and a willingness to show up.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Shirley
+                            has also collaborated with her husband, Don Robertson, and son, Damon Robertson, on the
+                            indie rock album <em>One Life</em> (2016)—a true family affair where creative differences
+                            were settled the old-fashioned way: by writing more songs. Their music blends traditional
+                            folk-rock with a secular humanist perspective, exploring what it means to live fully,
+                            intentionally, and with a good soundtrack.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Born in
+                            Los Angeles in 1948, Shirley is a retired clinical social worker who spent more than 20
+                            years with the Los Angeles County Department of Mental Health. She now brings that same
+                            compassion, insight, and deep commitment to community into her creative work—only with
+                            better lighting and occasional applause.</p>
+                    </div>
                 </div>
 
                 <!-- Don Robertson -->
-                <div class="reveal rough-card torn-both p-8 md:p-10 border-burnRed/30">
-                    <div class="w-full h-56 mb-6 overflow-hidden border-2 border-mudBrown press-shadow">
+                <div class="reveal rough-card torn-both overflow-hidden border-burnRed/30">
+                    <div class="w-full h-56 overflow-hidden border-b-2 border-mudBrown">
                         <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/HE_Don_Shirley_3.jpg"
-                         alt="Don and Shirley Robertson"
-                         class="w-full h-full object-cover object-right-top photo-raw">
+                         alt="Don Robertson" class="w-full h-full object-cover creator-photo" style="object-position:right top;">
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Don Robertson</h3>
-                    <p class="text-agentOrange font-marker text-sm mb-4">Writer &amp; Creator</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Don Robertson,
-                        writer and creator of <em>Harmony's Edge</em>, began seriously writing music in his seventh
-                        decade, after retiring from a 44-year career as a Sociology professor. He has since written more
-                        than 200 songs. Working with his wife, Shirley, and his son, Damon, he recorded an album,
-                        <em>One Life</em>, in 2016. Then he wrote a musical, <em>Family Reunion</em>, which was
-                        scheduled to be performed at the Pasadena Conservatory of Music in May of 2020, only to be
-                        canceled by Covid.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">
-                        <em>Harmony's Edge in Concert</em> is his second musical, also written with his wife and son.
-                        Don, now 86, draws upon his extensive experience with the counter-cultural movement and the
-                        music scene of the sixties in crafting this rock musical set in 1969.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Don's first
-                        band, "The Lizard," was created for an experimental sociology class at Long Beach State
-                        University in 1969. They called it primitive lizard rock. The band fell apart and went under a
-                        rock — but now the music is back.</p>
+                    <div class="p-8 md:p-10">
+                        <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Don Robertson</h3>
+                        <p class="text-agentOrange font-marker text-sm mb-4">Writer &amp; Creator</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Don
+                            Robertson, writer and creator of <em>Harmony's Edge</em>, began seriously writing music in
+                            his seventh decade, after retiring from a 44-year career as a Sociology professor. He has
+                            since written more than 200 songs. Working with his wife, Shirley, and his son, Damon, he
+                            recorded an album, <em>One Life</em>, in 2016. Then he wrote a musical,
+                            <em>Family Reunion</em>, which was scheduled to be performed at the Pasadena Conservatory of
+                            Music in May of 2020, only to be canceled by Covid.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">
+                            <em>Harmony's Edge in Concert</em> is his second musical, also written with his wife and
+                            son. Don, now 86, draws upon his extensive experience with the counter-cultural movement and
+                            the music scene of the sixties in crafting this rock musical set in 1969.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Don's
+                            first band, "The Lizard," was created for an experimental sociology class at Long Beach
+                            State University in 1969. They called it primitive lizard rock. The band fell apart and went
+                            under a rock — but now the music is back.</p>
+                    </div>
                 </div>
 
                 <!-- David Vernon -->
-                <div class="reveal rough-card torn-both p-8 md:p-10">
-                    <div class="w-full h-64 mb-6 overflow-hidden border-2 border-mudBrown press-shadow">
+                <div class="reveal rough-card torn-both overflow-hidden">
+                    <div class="w-full h-64 overflow-hidden border-b-2 border-mudBrown">
                         <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/HE_DV_Edited_-_MAIN.png"
-                         alt="David Vernon"
-                         class="w-full h-full object-cover object-top photo-raw">
+                         alt="David Vernon" class="w-full h-full object-cover creator-photo" style="object-position:center top;">
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">David Vernon</h3>
-                    <p class="text-stickerYellow font-marker text-sm mb-4">Director</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">I grew up with
-                        musicals — raised in an eccentrically artistic family and exposed to more art than I could
-                        possibly process. I became fascinated by people who burst into song when emotions became too
-                        complicated for ordinary conversation.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Some people
-                        ask, "Why are they singing?" My response is: "Why aren't we all?" I mean, admit it — wouldn't
-                        <em>Death of a Salesman</em> be a teensy-eensy bit more fun with a power ballad or two? Musicals
-                        happen because emotions exceed language.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">I became
-                        associated with the ridiculously talented Robertson family (who have more musical skills than
-                        the Von Trapp Family rolled into one) when I directed a staged presentation of Don Robertson's
-                        musical, <em>Family Reunion</em>. With our current show, <em>Harmony's Edge</em>, I became
-                        fascinated with Don and Shirley's wonderfully complex concept about legacy… and what happens
-                        when we finally tell the truth. And the question of "how do you make a musical about characters
-                        who are already singing." Perhaps it exists in the difference between what they are singing… and
-                        what they aren't really saying — to each other, and to the world.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Now, onto my
-                        credits and life skills. Here are three facts. One of them is not true. I was a writer/producer
-                        on the movie <em>Berlin, I Love You</em>, which starred Helen Mirren, Keira Knightley, Luke
-                        Wilson and Diego Luna, among other German actors whose names I still can't pronounce. My father
-                        was the voice of the Rankin/Bass animated TV show <em>Frosty the Snowman</em> and I still melt
-                        everywhere when I watch it. I wrote <em>The Mostly Unfabulous Social Life of Ethan Green</em>, a
-                        gay screwball comedy based on a famous gay comic strip. Actually, those are all true. The fact
-                        that one of them was not true, was the part that was untrue.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Why should
-                        you see <em>Harmony's Edge</em>? Because it has more than 15 totally original songs and has a
-                        theatricality that aligns with our fabulous Cat's Crawl Theater — the theater becomes part of
-                        the show. The audience is part of the show. It's a concert! It's a play! It's theater!</p>
+                    <div class="p-8 md:p-10">
+                        <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">David Vernon</h3>
+                        <p class="text-stickerYellow font-marker text-sm mb-4">Director</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">I grew up
+                            with musicals — raised in an eccentrically artistic family and exposed to more art than I
+                            could possibly process. I became fascinated by people who burst into song when emotions
+                            became too complicated for ordinary conversation.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Some
+                            people ask, "Why are they singing?" My response is: "Why aren't we all?" I mean, admit it —
+                            wouldn't <em>Death of a Salesman</em> be a teensy-eensy bit more fun with a power ballad or
+                            two? Musicals happen because emotions exceed language.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">I became
+                            associated with the ridiculously talented Robertson family (who have more musical skills
+                            than the Von Trapp Family rolled into one) when I directed a staged presentation of Don
+                            Robertson's musical, <em>Family Reunion</em>. With our current show,
+                            <em>Harmony's Edge</em>, I became fascinated with Don and Shirley's wonderfully complex
+                            concept about legacy… and what happens when we finally tell the truth. And the question of
+                            "how do you make a musical about characters who are already singing." Perhaps it exists in
+                            the difference between what they are singing… and what they aren't really saying — to each
+                            other, and to the world.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Now,
+                            onto my credits and life skills. Here are three facts. One of them is not true. I was a
+                            writer/producer on the movie <em>Berlin, I Love You</em>, which starred Helen Mirren, Keira
+                            Knightley, Luke Wilson and Diego Luna, among other German actors whose names I still can't
+                            pronounce. My father was the voice of the Rankin/Bass animated TV show
+                            <em>Frosty the Snowman</em> and I still melt everywhere when I watch it. I wrote
+                            <em>The Mostly Unfabulous Social Life of Ethan Green</em>, a gay screwball comedy based on a
+                            famous gay comic strip. Actually, those are all true. The fact that one of them was not
+                            true, was the part that was untrue.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">Why
+                            should you see <em>Harmony's Edge</em>? Because it has more than 15 totally original songs
+                            and has a theatricality that aligns with our fabulous Cat's Crawl Theater — the theater
+                            becomes part of the show. The audience is part of the show. It's a concert! It's a play!
+                            It's theater!</p>
+                    </div>
                 </div>
 
                 <!-- Damon Robertson -->
-                <div class="reveal rough-card torn-both p-8 md:p-10 border-burnRed/30">
-                    <div class="w-full h-56 mb-6 overflow-hidden border-2 border-mudBrown press-shadow">
+                <div class="reveal rough-card torn-both overflow-hidden border-burnRed/30">
+                    <div class="w-full h-56 overflow-hidden border-b-2 border-mudBrown">
                         <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/Damon_1.jpg"
-                         alt="Damon Robertson"
-                         class="w-full h-full object-cover object-top photo-raw">
+                         alt="Damon Robertson" class="w-full h-full object-cover creator-photo">
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Damon Robertson</h3>
-                    <p class="text-deepPurple font-marker text-sm mb-4">Musical Director</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Damon is a
-                        Singer/Songwriter, Producer, Arranger and Multi-Instrumentalist who has been performing and
-                        recording music for over 30 years. He is also the oldest of the show creator's two sons and has
-                        previously worked with Donald on several recording projects, including a full-length album
-                        titled <em>One Life</em>.</p>
-                    <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">While Damon
-                        has a background performing in musical theatre, this is his first experience serving as musical
-                        director, as well as having performed and recorded the majority of the musical performances and
-                        orchestral arrangements that serve as the soundtrack to <em>Harmony's Edge In Concert</em>.</p>
+                    <div class="p-8 md:p-10">
+                        <h3 class="text-2xl md:text-3xl font-slab text-paperCream mb-2">Damon Robertson</h3>
+                        <p class="text-deepPurple font-marker text-sm mb-4">Musical Director</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base">Damon is a
+                            Singer/Songwriter, Producer, Arranger and Multi-Instrumentalist who has been performing and
+                            recording music for over 30 years. He is also the oldest of the show creator's two sons and
+                            has previously worked with Donald on several recording projects, including a full-length
+                            album titled <em>One Life</em>.</p>
+                        <p class="text-paperCream/80 leading-relaxed font-typewriter text-sm md:text-base mt-4">While
+                            Damon has a background performing in musical theatre, this is his first experience serving
+                            as musical director, as well as having performed and recorded the majority of the musical
+                            performances and orchestral arrangements that serve as the soundtrack to
+                            <em>Harmony's Edge In Concert</em>.</p>
+                    </div>
                 </div>
 
             </div>
@@ -1099,7 +1178,7 @@ END REVIEWS HIDDEN -->
             </div>
             <div class="overflow-x-auto w-full reveal">
                 <div class="w-full max-w-5xl mx-auto bg-nightBlack/80 p-4 sm:p-8 border-2 border-mudBrown press-shadow scanlines"
-                    style="min-width: 700px;">
+                    style="min-width:700px;">
                     <div
                         class="flex flex-wrap items-center gap-4 mb-6 px-2 text-xs font-oswald uppercase tracking-wider text-paperCream/50">
                         <div class="flex items-center gap-2">
@@ -1192,8 +1271,8 @@ END REVIEWS HIDDEN -->
                             </div>
                             <div>
                                 <div class="font-bold text-paperCream">Location</div>
-                                <div class="text-paperCream/50 font-typewriter text-sm">660 N Heliotrope Dr., Los
-                                    Angeles, CA</div>
+                                <div class="text-paperCream/50 font-typewriter text-sm">660 N Heliotrope Dr<br>Los Angeles, CA 90004
+                                </div>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -1205,6 +1284,17 @@ END REVIEWS HIDDEN -->
                                 <div class="font-bold text-paperCream">Showtime</div>
                                 <div class="text-paperCream/50 font-typewriter text-sm">Varies by date. Doors 30 min
                                     before.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 border-2 border-draftGreen flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="globe" class="w-5 h-5 text-draftGreen"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-paperCream">Venue Website</div>
+                                <a href="https://www.skiptownplayhouse.com/" target="_blank" rel="noopener noreferrer"
+                                    class="text-draftGreen font-typewriter text-sm hover:text-stickerYellow transition-colors">skiptownplayhouse.com</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -1221,9 +1311,9 @@ END REVIEWS HIDDEN -->
                     </div>
                 </div>
                 <div class="reveal">
-                    <div class="relative press-shadow border-2 border-mudBrown">
-                        <img src="https://static.wixstatic.com/media/4542ff_81faf63b22934d4a92a8a49988f89b32~mv2.jpeg/v1/fill/w_522,h_391,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_1354%20Large.jpeg"
-                         alt="The Cats Crawl Venue" class="w-full photo-raw">
+                    <div class="relative press-shadow border-2 border-mudBrown overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/4542ff_81faf63b22934d4a92a8a49988f89b32~mv2.jpeg/v1/fill/w_1044,h_782,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_1354%20Large.jpeg"
+                         alt="The Cats Crawl" class="w-full photo-raw">
                         <div class="absolute top-4 left-4 sticker text-burnRed border-burnRed bg-nightBlack text-xs">NO
                             COVER CHARGE FOR DESERTERS</div>
                     </div>
@@ -1275,8 +1365,10 @@ END REVIEWS HIDDEN -->
                     <h4 class="font-marker text-agentOrange mb-4">Contact</h4>
                     <p class="text-paperCream/50 font-typewriter text-sm">
                         The Cats Crawl<br>
-                    660 N Heliotrope Dr.<br>
-                    Los Angeles, CA<br>
+                    660 N Heliotrope Dr<br>
+                    Los Angeles, CA 90004<br>
+                        <a href="https://www.skiptownplayhouse.com/" target="_blank" rel="noopener noreferrer"
+                            class="text-draftGreen hover:text-stickerYellow transition-colors">skiptownplayhouse.com</a><br>
                         <span class="text-paperCream/30">info&#64;harmonysedge.com</span>
                     </p>
                 </div>
@@ -1346,11 +1438,13 @@ END REVIEWS HIDDEN -->
     }
 
     var vinylAudio = null;
+
     function toggleVinyl() {
         var v = document.getElementById('vinyl');
         if (!vinylAudio) {
             var track = VINYL_TRACKS[Math.floor(Math.random() * VINYL_TRACKS.length)];
             vinylAudio = new Audio(track);
+            vinylAudio.volume = 0.65;
             vinylAudio.loop = true;
         }
         if (vinylAudio.paused) {
@@ -1364,7 +1458,23 @@ END REVIEWS HIDDEN -->
         }
     }
 
-    /* Cursor trail — desktop only, disabled on mobile via CSS */
+    function changeTrack() {
+        var v = document.getElementById('vinyl');
+        var currentSrc = vinylAudio ? vinylAudio.src : '';
+        var pool = VINYL_TRACKS.filter(function(t) {
+            return t !== currentSrc && encodeURIComponent(t) !== encodeURIComponent(currentSrc);
+        });
+        if (pool.length === 0) { pool = VINYL_TRACKS; }
+        var track = pool[Math.floor(Math.random() * pool.length)];
+        if (vinylAudio) { vinylAudio.pause(); }
+        vinylAudio = new Audio(track);
+        vinylAudio.volume = 0.65;
+        vinylAudio.loop = true;
+        vinylAudio.play().catch(function() { showToast('Could not load audio.', 'agentOrange'); });
+        v.classList.remove('paused');
+        showToast('New groove. Drop the needle.', 'stickerYellow');
+    }
+
     var trailEmojis = ['\u262E\uFE0F','\u270C\uFE0F','\uD83D\uDD25','\uD83C\uDFB8','\u270A','\uD83C\uDF39','\u26A1'];
     var lastTrail = 0;
     document.addEventListener('mousemove', function(e) {
