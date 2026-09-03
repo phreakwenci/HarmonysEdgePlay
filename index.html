@@ -683,8 +683,8 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
 
     <!-- Sticky mobile ticket button -->
     <div class="sticky-ticket md:hidden">
-        <a href="https://www.hollywoodfringe.org/projects/13600?tab=tickets" target="_blank" rel="noopener noreferrer">
-            Get Tickets &mdash; June Shows
+        <a href="#schedule">
+            Get Tickets
         </a>
     </div>
 
@@ -708,8 +708,10 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
                     <div class="hidden md:flex items-center gap-6">
                         <a href="#story"
                             class="text-sm uppercase tracking-widest hover:text-burnRed transition-colors">The Story</a>
+                        <a href="#cast"
+                            class="text-sm uppercase tracking-widest hover:text-burnRed transition-colors">The Cast</a>
                         <a href="#musicians"
-                            class="text-sm uppercase tracking-widest hover:text-burnRed transition-colors">Musicians</a>
+                            class="text-sm uppercase tracking-widest hover:text-burnRed transition-colors">The Band</a>
                         <a href="#schedule"
                             class="text-sm uppercase tracking-widest hover:text-burnRed transition-colors">Schedule</a>
                         <a href="#thecats"
@@ -720,8 +722,7 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
                         <!-- REVIEWS NAV HIDDEN — uncomment when reviews go live
                     <a href="#reviews" class="psychedelic-reviews">Reviews</a>
                     END REVIEWS NAV -->
-                        <a href="https://www.hollywoodfringe.org/projects/13600?tab=tickets" target="_blank"
-                            rel="noopener noreferrer"
+                        <a href="#schedule"
                             class="brutal-btn text-xs py-2 px-5 border-burnRed text-burnRed">Get Tickets</a>
                     </div>
                     <button onclick="toggleMobile()" class="md:hidden text-paperCream" id="mobileBtn">
@@ -732,7 +733,8 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
             <div class="md:hidden hidden bg-nightBlack border-b-2 border-mudBrown" id="mobileMenu">
                 <div class="px-4 py-6 space-y-4">
                     <a href="#story" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">The Story</a>
-                    <a href="#musicians" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">Musicians</a>
+                    <a href="#cast" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">The Cast</a>
+                    <a href="#musicians" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">The Band</a>
                     <a href="#schedule" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">Schedule</a>
                     <a href="#thecats" onclick="toggleMobile()" class="block text-lg hover:text-burnRed">The Cats
                         Crawl</a>
@@ -740,8 +742,7 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
                     <!-- REVIEWS MOBILE NAV HIDDEN — uncomment when reviews go live
                 <a href="#reviews" onclick="toggleMobile()" class="block psychedelic-reviews text-lg">Reviews</a>
                 END REVIEWS MOBILE NAV -->
-                    <a href="https://www.hollywoodfringe.org/projects/13600?tab=tickets" target="_blank"
-                        rel="noopener noreferrer" onclick="toggleMobile();"
+                    <a href="#schedule" onclick="toggleMobile();"
                         class="brutal-btn w-full text-center mt-2 block">Get Tickets</a>
                 </div>
             </div>
@@ -773,8 +774,7 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
                 <span class="text-burnRed">Will the dream survive?</span>
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://www.hollywoodfringe.org/projects/13600?tab=tickets" target="_blank"
-                    rel="noopener noreferrer"
+                <a href="#schedule"
                     class="brutal-btn text-lg px-10 py-4 border-burnRed text-burnRed jitter-hover">Get Tickets</a>
                 <a href="#story"
                     class="font-marker text-paperCream/70 hover:text-paperCream text-lg underline decoration-burnRed underline-offset-4">Read
@@ -921,13 +921,13 @@ body { background: #0f0f0f; color: #e8e4c9; font-family: 'Oswald', sans-serif; o
 </section>
 END REVIEWS HIDDEN -->
 
-    <!-- Musicians -->
-    <section id="musicians" class="relative z-10 py-20 md:py-32" style="background: #0a0a0a;">
+    <!-- Cast -->
+    <section id="cast" class="relative z-10 py-20 md:py-32" style="background: #0a0a0a;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <span class="sticker text-agentOrange border-agentOrange text-sm">Meet the Band</span>
+                <span class="sticker text-agentOrange border-agentOrange text-sm">Meet the Cast</span>
                 <h2 class="text-4xl md:text-6xl font-slab text-paperCream mt-6 mb-4 glitch ink-bleed"
-                    data-text="THE MUSICIANS">THE MUSICIANS</h2>
+                    data-text="THE CAST">THE CAST</h2>
                 <p class="text-paperCream/50 font-typewriter max-w-2xl mx-auto">Seven souls. One last shot at the dream.
                 </p>
             </div>
@@ -975,14 +975,25 @@ END REVIEWS HIDDEN -->
                         for a dangerous man.</p>
                 </div>
                 <div class="reveal rough-card p-6 jitter-hover group">
-                    <div class="w-full h-48 mb-4 overflow-hidden border-2 border-mudBrown press-shadow">
-                                                 <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/IMG_3275.jpeg" alt="Kate"  class="w-full h-full object-cover creator-photo" style="object-position:center 25%;">
-
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div>
+                            <div class="w-full h-48 overflow-hidden border-2 border-mudBrown press-shadow">
+                                <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/Kelly%20Hooper-HS%20-%20HE.jpeg" alt="Kelly Hooper as Kate" class="w-full h-full object-cover creator-photo" style="object-position:center 20%;">
+                            </div>
+                            <p class="text-paperCream/50 font-typewriter text-xs uppercase tracking-widest text-center mt-2">Kelly Hooper</p>
+                        </div>
+                        <div>
+                            <div class="w-full h-48 overflow-hidden border-2 border-mudBrown press-shadow">
+                                <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/IMG_3275.jpeg" alt="Jennifer Cipolla as Kate" class="w-full h-full object-cover creator-photo" style="object-position:center 25%;">
+                            </div>
+                            <p class="text-paperCream/50 font-typewriter text-xs uppercase tracking-widest text-center mt-2">Jennifer Cipolla</p>
+                        </div>
                     </div>
                     <h3 class="text-2xl font-slab text-paperCream mb-1">Kate</h3>
                     <p class="text-stickerYellow font-marker text-sm mb-3">Ambitious Dreamer</p>
-                    <p class="text-paperCream/60 text-sm leading-relaxed font-typewriter">Played by Jennifer Cippola - A brash and fiercely ambitious
-                        dreamer who uses her sharp wit to shield a heart that just wants to be chosen.</p>
+                    <p class="text-paperCream/60 text-sm leading-relaxed font-typewriter">Played by Kelly Hooper and
+                        Jennifer Cipolla - A brash and fiercely ambitious dreamer who uses her sharp wit to shield a
+                        heart that just wants to be chosen.</p>
                 </div>
                 <div class="reveal rough-card p-6 jitter-hover group">
                     <div class="w-full h-48 mb-4 overflow-hidden border-2 border-mudBrown press-shadow">
@@ -995,7 +1006,7 @@ END REVIEWS HIDDEN -->
                         anchor who remains haunted by a single moment of betrayal that shattered their shot at stardom.
                     </p>
                 </div>
-                <div class="reveal rough-card p-6 jitter-hover group md:col-span-2 lg:col-span-1 lg:col-start-2">
+                <div class="reveal rough-card p-6 jitter-hover group">
                     <div class="w-full h-48 mb-4 overflow-hidden border-2 border-mudBrown press-shadow">
                                                  <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/IMG_3272.jpeg" alt="Grant"  class="w-full h-full object-cover creator-photo" style="object-position:center 45%;">
 
@@ -1005,6 +1016,29 @@ END REVIEWS HIDDEN -->
                     <p class="text-paperCream/60 text-sm leading-relaxed font-typewriter">Played by Don Robertson - A hard-driving manager of
                         musical performers, praised for his great successes and criticized as a control freak. He is
                         driven to redeem his one failure, the crash of Harmony's Edge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Musicians (Clockwork) -->
+    <section id="musicians" class="relative z-10 py-20 md:py-32 paper-bg scanlines">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="sticker text-deepPurple border-deepPurple text-sm">Meet the Band</span>
+                <h2 class="text-4xl md:text-6xl font-slab text-paperCream mt-6 mb-4 glitch ink-bleed"
+                    data-text="THE MUSICIANS">THE MUSICIANS</h2>
+                <p class="text-paperCream/50 font-typewriter max-w-2xl mx-auto">Clockwork — the live band bringing
+                    1969 to the stage alongside the cast.</p>
+            </div>
+            <div class="reveal max-w-sm mx-auto press-shadow border-2 border-mudBrown overflow-hidden">
+                <img src="https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/images/Clockwork%20Poster%20-%20No%20Text.jpg"
+                    alt="Clockwork - the Harmony's Edge house band" class="w-full h-auto creator-photo">
+                <div class="bg-nightBlack/80 px-6 py-4 text-center">
+                    <p class="text-paperCream/60 font-typewriter text-xs uppercase tracking-widest leading-relaxed">
+                        Fletcher Crossman &ndash; Piano/Keyboards &bull; Donna Westwood &ndash; Guitar/Bass &bull; Ben
+                        Castellana &ndash; Guitar/Bass &bull; Jacob Morrison &ndash; Drums
+                    </p>
                 </div>
             </div>
         </div>
@@ -1199,42 +1233,18 @@ END REVIEWS HIDDEN -->
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-date="June 7, 2026">
-                                <td class="font-bold">Sun, June 7</td>
-                                <td><span class="inline-block px-2 py-0.5 text-xs font-bold bg-stickerYellow/20 border border-stickerYellow/50 text-stickerYellow uppercase mr-2">Preview</span>World Premiere!</td>
-                                <td>8:00 PM</td>
+                            <tr data-date="September 23, 2026" data-ticket-url="https://www.eventbrite.com/e/1999130237355?aff=oddtdtcreator">
+                                <td class="font-bold">Wed, Sept 23</td>
+                                <td>Performance</td>
+                                <td>7:00 PM</td>
                                 <td class="text-paperCream/60 font-typewriter text-xs">The Cats Crawl<br>660 N Heliotrope Dr.
                                 </td>
                                 <td class="ticket-cell"></td>
                             </tr>
-                            <tr data-date="June 12, 2026">
-                                <td class="font-bold">Fri, June 12</td>
-                                <td>Performance 1</td>
-                                <td>7:30 PM</td>
-                                <td class="text-paperCream/60 font-typewriter text-xs">The Cats Crawl<br>660 N Heliotrope Dr.
-                                </td>
-                                <td class="ticket-cell"></td>
-                            </tr>
-                            <tr data-date="June 14, 2026">
-                                <td class="font-bold">Sun, June 14</td>
-                                <td>Performance 2</td>
-                                <td>2:30 PM</td>
-                                <td class="text-paperCream/60 font-typewriter text-xs">The Cats Crawl<br>660 N Heliotrope Dr.
-                                </td>
-                                <td class="ticket-cell"></td>
-                            </tr>
-                            <tr data-date="June 24, 2026">
-                                <td class="font-bold">Wed, June 24</td>
-                                <td>Performance 3</td>
-                                <td>7:30 PM</td>
-                                <td class="text-paperCream/60 font-typewriter text-xs">The Cats Crawl<br>660 N Heliotrope Dr.
-                                </td>
-                                <td class="ticket-cell"></td>
-                            </tr>
-                            <tr data-date="June 27, 2026">
-                                <td class="font-bold">Sat, June 27</td>
-                                <td>Closing Night — Dream Never Died</td>
-                                <td>6:00 PM</td>
+                            <tr data-date="November 5, 2026" data-ticket-url="https://www.eventbrite.com/e/harmonys-edge-a-new-rock-musical-tickets-1999132706741?aff=erelpanelorg">
+                                <td class="font-bold">Thu, Nov 5</td>
+                                <td>Performance</td>
+                                <td>7:00 PM</td>
                                 <td class="text-paperCream/60 font-typewriter text-xs">The Cats Crawl<br>660 N Heliotrope Dr.
                                 </td>
                                 <td class="ticket-cell"></td>
@@ -1328,11 +1338,51 @@ END REVIEWS HIDDEN -->
                 data-text="GET IN OR GET OUT">GET IN OR GET OUT</h2>
             <p class="text-paperCream/60 text-lg md:text-xl mb-8 font-typewriter">The comeback only happens if you're
                 there to witness it.</p>
-            <a href="https://www.hollywoodfringe.org/projects/13600?tab=tickets" target="_blank"
-                rel="noopener noreferrer"
+            <a href="#schedule"
                 class="brutal-btn text-xl px-12 py-5 border-burnRed text-burnRed jitter-hover">Reserve Your Seat</a>
             <p class="text-paperCream/30 text-xs mt-6 font-typewriter uppercase tracking-widest">General Admission
                 &bull; No assigned seating &bull; 18+</p>
+        </div>
+    </section>
+
+    <!-- Follow the Riot -->
+    <div id="fb-root"></div>
+    <section id="social" class="relative z-10 py-20 md:py-32" style="background:#0a0a0a;">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="sticker text-burnRed border-burnRed text-sm reveal">Stay in the Riot</span>
+            <h2 class="text-4xl md:text-6xl font-slab text-paperCream mt-6 mb-4 glitch ink-bleed reveal"
+                data-text="FOLLOW ALONG">FOLLOW ALONG</h2>
+            <p class="text-paperCream/50 font-typewriter max-w-xl mx-auto mb-10 reveal">Behind-the-scenes, rehearsal
+                clips, and more from the cast and band.</p>
+            <div class="reveal flex flex-wrap items-start justify-center gap-8">
+                <div class="max-w-md w-full">
+                    <p class="text-paperCream/40 font-typewriter text-xs uppercase tracking-widest mb-3">Facebook</p>
+                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61560589439837"
+                        data-tabs="timeline" data-width="500" data-height="500" data-small-header="false"
+                        data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=61560589439837"
+                            class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=61560589439837">Harmony's Edge</a>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="max-w-md w-full">
+                    <p class="text-paperCream/40 font-typewriter text-xs uppercase tracking-widest mb-3">TikTok</p>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@harmonys.edge"
+                        data-unique-id="harmonys.edge" data-embed-type="creator"
+                        style="max-width: 780px;min-width: 288px;">
+                        <section>
+                            <a target="_blank" href="https://www.tiktok.com/@harmonys.edge?_r=1&amp;_t=ZT-993NDOQU7AM"
+                                rel="noopener noreferrer">@harmonys.edge on TikTok</a>
+                        </section>
+                    </blockquote>
+                </div>
+            </div>
+            <p class="text-paperCream/30 text-xs mt-10 font-typewriter uppercase tracking-widest">
+                Also on
+                <a href="https://www.instagram.com/harmonysedge1969/" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-burnRed underline">Instagram</a>
+            </p>
         </div>
     </section>
 
@@ -1342,16 +1392,30 @@ END REVIEWS HIDDEN -->
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <h3 class="font-slab text-2xl text-paperCream mb-2 ink-bleed">HARMONY'S EDGE</h3>
-                    <p class="text-paperCream/40 font-typewriter text-sm">A new rock musical.<br>Born in flames. Back for more.
+                    <p class="text-paperCream/40 font-typewriter text-sm mb-6">A new rock musical.<br>Born in flames. Back for more.
                     </p>
+                    <h4 class="font-marker text-stickerYellow mb-4">Follow the Riot</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.facebook.com/profile.php?id=61560589439837" target="_blank"
+                            rel="noopener noreferrer"
+                            class="sticker text-paperCream border-paperCream/40 text-xs px-3 py-1.5 hover:text-burnRed hover:border-burnRed">Facebook</a>
+                        <a href="https://www.instagram.com/harmonysedge1969/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="sticker text-paperCream border-paperCream/40 text-xs px-3 py-1.5 hover:text-burnRed hover:border-burnRed">Instagram</a>
+                        <a href="https://www.tiktok.com/@harmonys.edge?_r=1&amp;_t=ZT-993NDOQU7AM" target="_blank"
+                            rel="noopener noreferrer"
+                            class="sticker text-paperCream border-paperCream/40 text-xs px-3 py-1.5 hover:text-burnRed hover:border-burnRed">TikTok</a>
+                    </div>
                 </div>
                 <div>
                     <h4 class="font-marker text-burnRed mb-4">Navigate</h4>
                     <div class="space-y-2 font-oswald uppercase text-sm tracking-wider">
                         <a href="#story" class="block text-paperCream/50 hover:text-burnRed transition-colors">The
                             Story</a>
+                        <a href="#cast"
+                            class="block text-paperCream/50 hover:text-burnRed transition-colors">The Cast</a>
                         <a href="#musicians"
-                            class="block text-paperCream/50 hover:text-burnRed transition-colors">Musicians</a>
+                            class="block text-paperCream/50 hover:text-burnRed transition-colors">The Band</a>
                         <a href="#schedule"
                             class="block text-paperCream/50 hover:text-burnRed transition-colors">Schedule</a>
                         <a href="#thecats"
@@ -1382,7 +1446,7 @@ END REVIEWS HIDDEN -->
     <div class="fixed bottom-6 right-6 z-[200] space-y-3" id="toastContainer"></div>
 
     <script>
-        var TICKET_URL = 'https://www.hollywoodfringe.org/projects/13600?tab=tickets';
+        var TICKET_URL = 'https://www.eventbrite.com/e/1999130237355?aff=oddtdtcreator';
     var VINYL_TRACKS = [
         'https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/music/_An%20Awful%20Lot%20Of%20Hurt_%20NV%20Mix%203.mp3',
         'https://raw.githubusercontent.com/phreakwenci/HarmonysEdgePlay/main/music/_Cocaine%20Man_%20NV%20Mix.mp3',
@@ -1409,7 +1473,8 @@ END REVIEWS HIDDEN -->
                 row.classList.add('past-show');
                 cell.innerHTML = '<span class="status-badge inline-block px-3 py-1 text-xs font-bold bg-nightBlack border border-paperCream/10 text-paperCream/30 uppercase">Closed</span>';
             } else {
-                cell.innerHTML = '<a href="' + TICKET_URL + '" target="_blank" rel="noopener noreferrer" class="brutal-btn text-xs py-1.5 px-3 border-burnRed text-burnRed no-underline inline-block">Book Now</a>';
+                var rowTicketUrl = row.getAttribute('data-ticket-url') || TICKET_URL;
+                cell.innerHTML = '<a href="' + rowTicketUrl + '" target="_blank" rel="noopener noreferrer" class="brutal-btn text-xs py-1.5 px-3 border-burnRed text-burnRed no-underline inline-block">Book Now</a>';
             }
         });
     }
@@ -1503,6 +1568,9 @@ END REVIEWS HIDDEN -->
 
     console.log('%cTHE DREAM NEVER DIED', 'font-size: 24px; color: #dc143c; font-family: monospace;');
     </script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 </body>
 
 </html>
